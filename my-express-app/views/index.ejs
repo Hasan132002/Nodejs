@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Express App</title>
+</head>
+<body>
+    <h1>Welcome to My Express App</h1>
+    <p>This is a simple Express.js application.</p>
+    
+    <h2>Data from MySQL:</h2>
+    <ul>
+      <% data.forEach(item => { %>  
+        <li>ID: <%= item.id %></li>
+        <li>Name: <%= item.name %></li>
+        <li>Description: <%= item.description %></li>
+        <li>Contact No: <%= item.contact_no %></li>
+        <br>
+      <% }); %>
+    </ul>
+</body>
+</html>
