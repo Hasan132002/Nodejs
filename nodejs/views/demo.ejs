@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD App</title>
+</head>
+<body>
+  <h1>CRUD App</h1>
+  <h2>Data from MySQL:</h2>
+  <ul>
+    <% data.forEach(item => { %>
+      <li>
+        <strong>ID:</strong> <%= item.id %><br>
+        <strong>Name:</strong> <%= item.name %><br>
+        <strong>Description:</strong> <%= item.description %><br>
+        <strong>Contact No:</strong> <%= item.contact_no %><br>
+        <a href="/items/<%= item.id %>">View Details</a> |
+        <a href="/items/<%= item.id %>/edit">Edit</a> |
+        <form action="/items/<%= item.id %>" method="POST" style="display: inline;">
+          <input type="hidden" name="_method" value="DELETE">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+    <% }); %>
+  </ul>
+  <a href="/forms">Add New Item</a>
+</body>
+</html>

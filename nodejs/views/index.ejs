@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Express App</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        h1, p {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin-right: 10px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to My Express App</h1>
+        <p>This is a simple Express.js application.</p>
+        
+        <h2>Data from MySQL:</h2>
+        <ul>
+            <% data.forEach(item => { %>  
+                <li>
+                    <strong>ID:</strong> <%= item.id  %><br>
+                    <strong>Name:</strong> <%= item.name%><br>
+                    <strong>Description:</strong> <%= item.description %><br>
+                    <strong>Contact No:</strong> <%= item.contact_no %><br>
+                    <form action="/items/<%= item.id %>" method="POST">
+                        <button type="submit" class="btn btn-primary" name="_method" value="PUT">Update</button>
+                        <br>
+                        <label for="updateName">Name:</label>
+                        <input type="text" class="form-control" id="updateName" name="updateName" required>
+                        <label for="updateDescription">Description:</label>
+                        <textarea class="form-control" id="updateDescription" name="updateDescription" rows="4" required></textarea>
+
+                    </form>
+                    <form action="/items/<%= item.id %>" method="POST">
+                        <button type="submit" class="btn btn-danger" name="_method" value="DELETE">Delete</button>
+                    </form>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.9/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
